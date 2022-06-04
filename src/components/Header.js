@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // useDispatch is use for modify the reducer
 // useSelector is use for select reducer
@@ -6,28 +6,50 @@ import { useHistory } from "react-router-dom";
 
 import styled from "styled-components";
 import {
-  selectUserEmail,
   selectUserName,
   selectUserPhoto,
   setUserLoginDetails,
+  setSignOutState,
 } from "../feachers/users/userSlice";
 import { auth, provider } from "../firebase";
 
 const Header = (props) => {
   const dispatch = useDispatch();
-  const histry = useHistory();
+  const history = useHistory();
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser(user);
+        history.push("/home");
+      }
+    });
+  }, [userName]);
+  //    if the user is login brign to the home page
+
+  //   this function only run when the dependancy change (UserName)
+
   const handleAuth = () => {
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        setUser(result.user);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+    if (!userName) {
+      auth
+        .signInWithPopup(provider)
+        .then((result) => {
+          setUser(result.user);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } else if (userName) {
+      auth
+        .signOut()
+        .then(() => {
+          dispatch(setSignOutState());
+          history.push("/");
+        })
+        .catch((err) => alert(err.message));
+    }
   };
 
   const setUser = (user) => {
@@ -45,42 +67,45 @@ const Header = (props) => {
       <Logo>
         <img src="/images/logo.svg" alt="Disney+" />
       </Logo>
-      {
-        //   if user is not login show Login btn
-        !userName ? (
-          <Login onClick={handleAuth}>Login</Login>
-        ) : (
-          <>
-            <NavMenu>
-              <a href="/home">
-                <img src="/images/home-icon.svg" alt="HOME" />
-                <span>home</span>
-              </a>
-              <a href="/search">
-                <img src="/images/search-icon.svg" alt="HOME" />
-                <span>search</span>
-              </a>
-              <a href="/hwatchlist">
-                <img src="/images/watchlist-icon.svg" alt="HOME" />
-                <span>watchlist</span>
-              </a>
-              <a href="/originals">
-                <img src="/images/original-icon.svg" alt="HOME" />
-                <span>originals</span>
-              </a>
-              <a href="/MOVIES">
-                <img src="/images/movie-icon.svg" alt="MOVIES" />
-                <span>MOVIES</span>
-              </a>
-              <a href="/SERIES">
-                <img src="/images/series-icon.svg" alt="SERIES" />
-                <span>SERIES</span>
-              </a>
-            </NavMenu>
+
+      {!userName ? (
+        <Login onClick={handleAuth}>Login</Login>
+      ) : (
+        <>
+          <NavMenu>
+            <a href="/home">
+              <img src="/images/home-icon.svg" alt="HOME" />
+              <span>HOME</span>
+            </a>
+            <a>
+              <img src="/images/search-icon.svg" alt="SEARCH" />
+              <span>SEARCH</span>
+            </a>
+            <a>
+              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
+              <span>WATCHLIST</span>
+            </a>
+            <a>
+              <img src="/images/original-icon.svg" alt="ORIGINALS" />
+              <span>ORIGINALS</span>
+            </a>
+            <a>
+              <img src="/images/movie-icon.svg" alt="MOVIES" />
+              <span>MOVIES</span>
+            </a>
+            <a>
+              <img src="/images/series-icon.svg" alt="SERIES" />
+              <span>SERIES</span>
+            </a>
+          </NavMenu>
+          <SignOut>
             <UserImg src={userPhoto} alt={userName} />
-          </>
-        )
-      }
+            <DropDown>
+              <span onClick={handleAuth}>Sign out</span>
+            </DropDown>
+          </SignOut>
+        </>
+      )}
     </Nav>
   );
 };
@@ -189,6 +214,42 @@ const Login = styled.a`
 `;
 const UserImg = styled.img`
   height: 100%;
+`;
+
+const DropDown = styled.div`
+  position: absolute;
+  top: 48px;
+  right: 0px;
+  background-color: rgb(19, 19, 19);
+  border: 1px solid rgb(151, 151, 151, 0.34);
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0/50%) 0px 0px 18px 0px;
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  width: 100px;
+  opacity: 0;
+`;
+
+const SignOut = styled.div`
+  position: relative;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  ${UserImg} {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+  }
+  &:hover {
+    ${DropDown} {
+      opacity: 1;
+      transition-duration: 1s;
+    }
+  }
 `;
 
 export default Header;
