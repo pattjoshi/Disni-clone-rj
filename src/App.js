@@ -4,9 +4,11 @@ import Header from "./components/Header";
 
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Detail from "./components/Detail";
+
 const App = () => {
   return (
-    <>
+    <div className="App">
       <Router>
         <Header />
         <Switch>
@@ -16,9 +18,12 @@ const App = () => {
           <Route path="/home">
             <Home />
           </Route>
+          <Route path="/detail/:id">
+            <Detail />
+          </Route>
         </Switch>
       </Router>
-    </>
+    </div>
   );
 };
 
