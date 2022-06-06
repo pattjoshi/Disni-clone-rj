@@ -45,6 +45,7 @@ You can view the site here
 - React.js
 - Redux
 - Firebase
+- styled-components
 
 ### How To Use :-
 
