@@ -5,6 +5,12 @@ A Disney+ Clone that you can sign in with your Google Account.
 # Image:-
 <img width="934" alt="image" src="https://user-images.githubusercontent.com/78966839/172210106-9045ad07-dd0c-4c45-8a0a-16b21c69c195.png">
 
+<img width="939" alt="image" src="https://user-images.githubusercontent.com/78966839/172211702-5773629d-cac7-44c3-8489-c69fd573568a.png">
+
+<img width="953" alt="image" src="https://user-images.githubusercontent.com/78966839/172211903-84d22f23-b613-4037-84b1-529b4a8a3757.png">
+
+<img width="956" alt="image" src="https://user-images.githubusercontent.com/78966839/172212004-7928ed87-fe36-4340-893a-f716682d5418.png">
+
 
 
 
