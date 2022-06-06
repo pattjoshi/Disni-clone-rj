@@ -34,3 +34,25 @@ You can view the site here
 - React.js
 - Redux
 - Firebase
+
+### How To Use :-
+
+####    Step 1 :- 
+ Download the zip file or clone the repo
+####    Step 2 :- 
+In terminal type :
+```
+yarn
+```
+
+#### Step 3 :-
+```
+yarn start
+```
+
+
+ yarn run build
+
+ [I Learn from Hear](https://www.youtube.com/watch?v=R_OERlafbmw&t=11s)
+ 
+ 🙏 If you find this repo helpful then don't forget to give a star ❇️ to this repository. :)
