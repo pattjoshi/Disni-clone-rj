@@ -2,9 +2,18 @@
 
 A Disney+ Clone that you can sign in with your Google Account.
 
+# Image:-
+![Uploading image.png…]()
+
+
+
+# Vidio:-
+
 Click demo to try it by yourself!
 
 ## Disney+ Clone Demo Link
+
+
 
 You can view the site here
 [Click Me]()
@@ -24,10 +33,11 @@ You can view the site here
 
 ## Features
 
-- User and Guest Authentication (with Redux and Fireauth)
+- User  Authentication (with Redux and Fireauth)
 - Realtime Dynamic Data (with Firestore)
 - Interactive Components (with React Styled Components)
 - Fully Responsive Front-end
+- Login page date real-time
 
 ## Technologies
 
