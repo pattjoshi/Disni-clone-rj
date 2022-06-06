@@ -3,7 +3,8 @@
 A Disney+ Clone that you can sign in with your Google Account.
 
 # Image:-
-![Uploading image.png…]()
+<img width="934" alt="image" src="https://user-images.githubusercontent.com/78966839/172210106-9045ad07-dd0c-4c45-8a0a-16b21c69c195.png">
+
 
 
 
