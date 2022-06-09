@@ -11,6 +11,10 @@ A Disney+ Clone that you can sign in with your Google Account.
 
 <img width="956" alt="image" src="https://user-images.githubusercontent.com/78966839/172212004-7928ed87-fe36-4340-893a-f716682d5418.png">
 
+# folder structure:-
+<img width="952" alt="image" src="https://user-images.githubusercontent.com/78966839/172903039-997c5dca-ce89-43ce-86e0-8e31e2e6c7bf.png">
+
+
 Click demo to try it by yourself!
 
 ## Disney+ Clone Demo Link
